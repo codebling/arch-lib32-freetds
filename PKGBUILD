@@ -14,6 +14,7 @@ depends=(lib32-glibc
          lib32-openssl
          lib32-readline
          lib32-unixodbc)
+provides=($_pkgname32) #both metapackages provide "base" package
 source=(https://www.freetds.org/files/stable/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('4e7a8afe83e954197084e3d2127be1e37ee9dd5deb0d9e705467e60ec73de4df')
 
