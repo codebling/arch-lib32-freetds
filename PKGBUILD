@@ -38,4 +38,10 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
+
+  rm -rf $pkgdir/usr/share
+  rm -rf $pkgdir/usr/include
+  for f in $pkgdir/usr/bin/*; do
+    mv -v $f ${f}32
+  done
 }
