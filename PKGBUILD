@@ -9,11 +9,11 @@ url='https://www.freetds.org'
 arch=(x86_64)
 license=(GPL-2.0-only
          LGPL-2.0-only)
-depends=(glibc
-         krb5
-         openssl
-         readline
-         unixodbc)
+depends=(lib32-glibc
+         lib32-krb5
+         lib32-openssl
+         lib32-readline
+         lib32-unixodbc)
 source=(https://www.freetds.org/files/stable/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('4e7a8afe83e954197084e3d2127be1e37ee9dd5deb0d9e705467e60ec73de4df')
 
