@@ -1,0 +1,41 @@
+_lib32=lib32-
+_pkgname=freetds
+pkgname=$_lib32$_pkgname
+pkgver=1.5.8
+pkgrel=1
+pkgdesc='Library for accessing Sybase and MS SQL Server databases'
+url='https://www.freetds.org'
+arch=(x86_64)
+license=(GPL-2.0-only
+         LGPL-2.0-only)
+depends=(glibc
+         krb5
+         openssl
+         readline
+         unixodbc)
+backup=(etc/freetds/freetds.conf
+        etc/freetds/locales.conf
+        etc/freetds/pool.conf)
+source=(https://www.freetds.org/files/stable/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('4e7a8afe83e954197084e3d2127be1e37ee9dd5deb0d9e705467e60ec73de4df')
+
+build() {
+  cd $_pkgname-$pkgver
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --sysconfdir=/etc/freetds \
+    --enable-msdblib \
+    --enable-krb5 \
+    --with-unixodbc=/usr \
+    --with-openssl
+  make 
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+}
