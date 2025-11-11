@@ -39,6 +39,8 @@ package_base() {
 }
 
 package_lib32-freetds-sidebyside64() {
+  conflicts+=(lib32-freetds-full)
+
   package_base
 
   rm -rf $pkgdir/etc/
