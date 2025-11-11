@@ -43,6 +43,7 @@ package_lib32-freetds-sidebyside64() {
 
   package_base
 
+  #generate a minimal install with no etc, docs or man, so that it can live alongside main `freetds` package
   rm -rf $pkgdir/etc/
   rm -rf $pkgdir/usr/share
   rm -rf $pkgdir/usr/include
