@@ -39,6 +39,7 @@ package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
+  rm -rf $pkgdir/etc/
   rm -rf $pkgdir/usr/share
   rm -rf $pkgdir/usr/include
   for f in $pkgdir/usr/bin/*; do
